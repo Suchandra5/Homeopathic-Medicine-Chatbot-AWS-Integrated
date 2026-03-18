@@ -37,6 +37,12 @@ AWS_ACCESS_KEY_ID     = get_secret("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = get_secret("AWS_SECRET_ACCESS_KEY")
 AWS_REGION            = get_secret("AWS_REGION")
 
+# ── Debug: check if secrets are loading ──
+st.write("AWS_ACCESS_KEY_ID loaded:", "YES" if AWS_ACCESS_KEY_ID else "NO ❌")
+st.write("AWS_SECRET_ACCESS_KEY loaded:", "YES" if AWS_SECRET_ACCESS_KEY else "NO ❌")
+st.write("AWS_REGION loaded:", "YES" if AWS_REGION else "NO ❌")
+st.write("GOOGLE_API_KEY loaded:", "YES" if GOOGLE_API_KEY else "NO ❌")get_secret("AWS_REGION")
+
 # ── Load model + index once (cached) ─────────────────────────
 @st.cache_resource(show_spinner="Loading knowledge base...")
 def load_qa_chain():
