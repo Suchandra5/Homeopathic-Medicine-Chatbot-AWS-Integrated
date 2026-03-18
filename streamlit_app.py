@@ -24,29 +24,29 @@ st.set_page_config(
 st.title("🩺 Homeopathic Medicine Chatbot")
 st.caption("Powered by Gemini + FAISS + AWS S3")
 
-def get_secret(key):
-    secrets = {
-        "GOOGLE_API_KEY": "AIzaSyD4P7dpHhHiEfMpZNw5gYXIbBISJagBDvU",
-        "AWS_ACCESS_KEY_ID": "AKIASAIZTY75LX6JJOVN",
-        "AWS_SECRET_ACCESS_KEY": "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",
-        "AWS_REGION": "ap-south-1"
-    }
-    return secrets.get(key) or os.getenv(key)
 # def get_secret(key):
-#     try:
-#         return st.secrets[key]
-#     except Exception:
-#         return os.getenv(key)
+#     secrets = {
+#         "GOOGLE_API_KEY": "AIzaSyD4P7dpHhHiEfMpZNw5gYXIbBISJagBDvU",
+#         "AWS_ACCESS_KEY_ID": "AKIASAIZTY75LX6JJOVN",
+#         "AWS_SECRET_ACCESS_KEY": "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",
+#         "AWS_REGION": "ap-south-1"
+#     }
+#     return secrets.get(key) or os.getenv(key)
+def get_secret(key):
+    try:
+        return st.secrets[key]
+    except Exception:
+        return os.getenv(key)
 
-# GOOGLE_API_KEY        = get_secret("GOOGLE_API_KEY")
-# AWS_ACCESS_KEY_ID     = get_secret("AWS_ACCESS_KEY_ID")
-# AWS_SECRET_ACCESS_KEY = get_secret("AWS_SECRET_ACCESS_KEY")
-# AWS_REGION            = get_secret("AWS_REGION")
+GOOGLE_API_KEY        = get_secret("GOOGLE_API_KEY")
+AWS_ACCESS_KEY_ID     = get_secret("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = get_secret("AWS_SECRET_ACCESS_KEY")
+AWS_REGION            = get_secret("AWS_REGION")
 
-# st.write("AWS_ACCESS_KEY_ID loaded:", "YES" if AWS_ACCESS_KEY_ID else "NO")
-# st.write("AWS_SECRET_ACCESS_KEY loaded:", "YES" if AWS_SECRET_ACCESS_KEY else "NO")
-# st.write("AWS_REGION loaded:", "YES" if AWS_REGION else "NO")
-# st.write("GOOGLE_API_KEY loaded:", "YES" if GOOGLE_API_KEY else "NO")
+st.write("AWS_ACCESS_KEY_ID loaded:", "YES" if AWS_ACCESS_KEY_ID else "NO")
+st.write("AWS_SECRET_ACCESS_KEY loaded:", "YES" if AWS_SECRET_ACCESS_KEY else "NO")
+st.write("AWS_REGION loaded:", "YES" if AWS_REGION else "NO")
+st.write("GOOGLE_API_KEY loaded:", "YES" if GOOGLE_API_KEY else "NO")
 
 @st.cache_resource(show_spinner="Loading knowledge base...")
 def load_qa_chain():
